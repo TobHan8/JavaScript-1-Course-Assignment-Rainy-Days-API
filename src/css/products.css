@@ -108,7 +108,7 @@ nav a:hover {
 }
 
 .hero-background-image {
-  background-image: url(/assets/images/hero-background-image.jpg);
+  background-image: url(../../assets/images/hero-background-image.jpg);
   background-position: bottom center;
 }
 
