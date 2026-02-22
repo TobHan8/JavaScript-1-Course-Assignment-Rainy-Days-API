@@ -28,7 +28,7 @@ function displayConfirmation () {
     confirmationContentContainer.appendChild(confirmImg);
 
     const continueLink = document.createElement("a");
-    continueLink.href = "/index.html";
+    continueLink.href = "index.html";
     confirmationContentContainer.appendChild(continueLink);
 
     const continueBtn = document.createElement("button");
