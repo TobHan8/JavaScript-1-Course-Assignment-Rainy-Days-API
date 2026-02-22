@@ -1,9 +1,7 @@
 function displayConfirmation () {
 
-    const confirmationContainer = document.createElement("div");
-    confirmationContainer.classList.add("confirmation-container");
-    document.body.appendChild(confirmationContainer);
-
+    const confirmationContainer = document.getElementById("confirmation-container");
+    
     const confirmationTitleContainer = document.createElement("div");
     confirmationTitleContainer.classList.add("confirmation-title-container");
     confirmationContainer.appendChild(confirmationTitleContainer);
