@@ -31,7 +31,7 @@ async function displayCart () {
         emptyCartContentContainer.appendChild(clickBelowMessage);
 
         const continueLink = document.createElement("a");
-        continueLink.href = "/index.html";
+        continueLink.href = "index.html";
         emptyCartContentContainer.appendChild(continueLink);
 
         const continueBtn = document.createElement("button");
@@ -75,7 +75,7 @@ async function displayCart () {
 
         const confirmationLink = document.createElement("a");
         confirmationLink.classList.add("confirmation-link");
-        confirmationLink.href = "/confirmation.html";
+        confirmationLink.href = "confirmation.html";
         cartContentRightContainer.appendChild(confirmationLink);
         
         const proceedBtn = document.createElement("button"); //Add attributes later on
