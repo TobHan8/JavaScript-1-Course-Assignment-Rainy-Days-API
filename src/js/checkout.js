@@ -7,7 +7,7 @@ import { removeFromCart,
 async function displayCart () {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartMainContainer = document.getElementById("cart-main-container");
-    cartMainContainer.innerHTML = ""; //Clears the cart content
+    cartMainContainer.innerHTML = ""; //Clears the cart container
 
     //If the cart is empty
     if (cart.length === 0) {

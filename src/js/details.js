@@ -9,7 +9,6 @@ import { addToCart } from "./utils.js";
 async function main() {
     const singleProductData = await fetchSingleProduct();
     displaySingleProduct(singleProductData);
-    console.log(singleProductData);
 }
 
 //Function to display single product via HTML elements

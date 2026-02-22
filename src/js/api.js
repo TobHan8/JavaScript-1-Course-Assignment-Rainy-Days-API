@@ -20,7 +20,7 @@ class HttpError extends Error {
     constructor(message) {
         super(message);
         this.name = "HttpError";
-        this.statusCode = this.statusCode;
+        this.statusCode = message;
     }
 }
 

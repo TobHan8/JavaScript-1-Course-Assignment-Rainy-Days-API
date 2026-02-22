@@ -3,7 +3,7 @@ import { allProductsContainer } from "./constants.js";
 
 import { fetchAllProducts } from "./api.js";
 
-import { addToCart, displayToast } from "./utils.js";
+import { addToCart } from "./utils.js";
 
 //Main function to call the return of json.data from the API call
 async function main() {

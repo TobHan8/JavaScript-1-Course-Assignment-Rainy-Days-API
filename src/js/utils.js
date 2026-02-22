@@ -1,8 +1,8 @@
-import { addToCartBtn } from "./constants.js";
-
 //Add to cart function
 export function addToCart(product) {
+  
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
   const existingItem = cart.find(item => item.id === product.id);
 
   //If the item already is in cart, increase quantity by +1
@@ -15,15 +15,29 @@ export function addToCart(product) {
     displayToast("1x " + product.title + " has been added to cart!", "success");
   }
 
+  //Store array in local storage as string value
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 //Remove from cart function
 export function removeFromCart(product) {
+
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartUpdated = cart.filter(item => item.id !== product.id);
-  localStorage.setItem("cart", JSON.stringify(cartUpdated));
-  displayToast(product.quantity + "x " + product.title + " has been removed from cart.", "error");
+
+  const existingItem = cart.find(item => item.id == product.id);
+
+  //If the item quantity in cart is more than 1, reduce item quantity in array by 1
+  if (existingItem.quantity > 1) {
+    existingItem.quantity -= 1;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    displayToast("1x " + product.title + " has been removed from the cart.", "error");
+
+    //If not, filter item from array and store array as string value in local storage
+  } else {
+    const cartUpdated = cart.filter(item => item.id !== product.id);
+    localStorage.setItem("cart", JSON.stringify(cartUpdated));
+    displayToast(product.title + " has been removed from cart.", "error");
+  }
 }
 
 //parseFloat with .toFixed to only display 2 decimal points in price float value
@@ -44,7 +58,7 @@ export function calculateTotalPrice(cart) {
 
 //Toast message function to display notifications and errors
 export function displayToast(message, type) {
-  console.log("showToast called", message, type);
+
   const toastContainer = document.createElement("div");
   toastContainer.classList.add("toast-container");
   document.body.appendChild(toastContainer);
