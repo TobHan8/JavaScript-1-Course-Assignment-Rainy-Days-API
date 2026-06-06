@@ -3,6 +3,7 @@ export const ALL_PRODUCTS_URL = `${BASE_API_URL}/rainy-days`;
 export const SINGLE_PRODUCT_URL = `${ALL_PRODUCTS_URL}/`;
 
 export const allProductsContainer = document.getElementById("all-products-container");
+export const allProducts = document.getElementById('all-products');
 export const singleProductContainer = document.getElementById("single-product-container");
 
 export const loadingIndicator = document.getElementById ("loading-indicator");

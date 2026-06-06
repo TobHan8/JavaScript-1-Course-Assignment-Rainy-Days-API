@@ -1,22 +1,74 @@
 //Imports
-import { allProductsContainer } from "./constants.js";
+import { allProductsContainer, allProducts } from "./constants.js";
 
 import { fetchAllProducts } from "./api.js";
 
-import { addToCart } from "./utils.js";
+import { addToCart, displayToast } from "./utils.js";
 
 //Main function to call the return of json.data from the API call
 async function main() {
     const allProductsData = await fetchAllProducts();
+
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('btn-container');
+    allProductsContainer.appendChild(btnContainer);
+
+    const allBtn = document.createElement('button');
+    allBtn.classList.add('filter-btns');
+    allBtn.textContent = 'ALL';
+    btnContainer.appendChild(allBtn);
+
+    const femaleBtn = document.createElement('button');
+    femaleBtn.classList.add('filter-btns');
+    femaleBtn.textContent = 'FEMALE';
+    btnContainer.appendChild(femaleBtn);
+
+    const maleBtn = document.createElement('button');
+    maleBtn.classList.add('filter-btns');
+    maleBtn.textContent = 'MALE';
+    btnContainer.appendChild(maleBtn);
+
+    const products = document.getElementById('all-products');
+
+    femaleBtn.addEventListener('click', () => {
+      allProducts.innerHTML = '';
+      displayAllProducts(genderFilter(allProductsData, 'Female'));
+    });
+
+    maleBtn.addEventListener('click', () => {
+      allProducts.innerHTML = '';
+      displayAllProducts(genderFilter(allProductsData, 'Male'));
+    });
+
+    allBtn.addEventListener('click', () => {
+      allProducts.innerHTML = '';
+      displayAllProducts(allProductsData);
+    });
+
     displayAllProducts(allProductsData);
+
+
 }
+
+function genderFilter(allProductsData, genderType) {
+
+      if (genderType === 'Male' || 'Female') {
+        return allProductsData.filter(product => genderType === product.gender);
+      } else {
+        displayToast('Error!', 'Unable to apply filter for products. Please refresh the page', 'error');
+        return;
+      }
+  }
 
 //Display the products for the user by creating HTML via the DOM
 function displayAllProducts(allProductsData) {
+  
+  allProducts.classList.add('all-products');
+
   allProductsData.forEach(product => {
     const productContainer = document.createElement("div");
     productContainer.classList.add("product-container");
-    allProductsContainer.appendChild(productContainer);
+    allProducts.appendChild(productContainer);
 
     const imageLink = document.createElement("a");
     imageLink.href = `details.html?id=${product.id}`;
@@ -61,10 +113,8 @@ function displayAllProducts(allProductsData) {
     addToCartBtn.addEventListener("click", () => {
       addToCart(product);
     });
-
   });
-
-};
+}
 
 //Calling main function to start program
 main();
