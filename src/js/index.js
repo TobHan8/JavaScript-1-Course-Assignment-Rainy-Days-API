@@ -46,8 +46,6 @@ async function main() {
     });
 
     displayAllProducts(allProductsData);
-
-
 }
 
 function genderFilter(allProductsData, genderType) {
