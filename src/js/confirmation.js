@@ -23,7 +23,7 @@ function displayConfirmation () {
     confirmImg.classList.add("confirm-img");
     confirmImg.src = "assets/images/checkout-confirmation.png";
     confirmImg.alt = "Confirmation checkbox illustration";
-    confirmationContentContainer.appendChild(confirmImg);
+    confirmImgContainer.appendChild(confirmImg);
 
     const continueLink = document.createElement("a");
     continueLink.href = "./index.html";
