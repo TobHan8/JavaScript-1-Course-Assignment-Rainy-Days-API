@@ -95,7 +95,7 @@ async function displayCart () {
             const cartProductImg = document.createElement("img");
             cartProductImg.src = product.image.url;
             cartProductImg.alt = product.image.alt;
-            cartProductContainer.appendChild(cartProductImg);
+            cartProductImgContainer.appendChild(cartProductImg);
 
             const cartProductSideContainer = document.createElement("div");
             cartProductSideContainer.classList.add("cart-product-side-container");
